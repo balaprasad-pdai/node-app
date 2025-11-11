@@ -49,5 +49,3 @@ spec:
         envFrom:
           - configMapRef:
               name: node-app-config
-          - secretRef:
-              name: node-app-secrets
