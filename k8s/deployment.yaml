@@ -48,6 +48,8 @@ spec:
           periodSeconds: 5
           timeoutSeconds: 3
           failureThreshold: 3
-        envFrom:
-            - configMapRef:
-                name: node-app-config
+    envFrom:
+      - configMapRef:
+        name: node-app-config
+      - secretRef:
+        name: node-app-secrets
