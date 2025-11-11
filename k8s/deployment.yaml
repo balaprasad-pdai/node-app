@@ -19,9 +19,7 @@ spec:
       - name: node-app
         image: populardigitalai/node-app:latest
         imagePullPolicy: Always
-        env:
-        - name: VITE_API_URL
-          value: "https://api.massimo.global"
+        # Environment comes from ConfigMap and Secrets (do not bake into the image)
         ports:
         - containerPort: 3000
           protocol: TCP
@@ -48,8 +46,8 @@ spec:
           periodSeconds: 5
           timeoutSeconds: 3
           failureThreshold: 3
-    envFrom:
-      - configMapRef:
-        name: node-app-config
-      - secretRef:
-        name: node-app-secrets
+        envFrom:
+          - configMapRef:
+              name: node-app-config
+          - secretRef:
+              name: node-app-secrets
